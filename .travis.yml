@@ -3,21 +3,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t ssomesh851/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t ssomesh472/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run ssomesh851/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t ssomes851/multi-client ./client
-  - docker build -t ssomes851/multi-nginx ./nginx
-  - docker build -t ssomes851/multi-server ./server
-  - docker build -t ssomes851/multi-worker ./worker
+  - docker build -t ssomesh472/multi-client ./client
+  - docker build -t ssomesh472/multi-nginx ./nginx
+  - docker build -t ssomesh472/multi-server ./server
+  - docker build -t ssomesh472/multi-worker ./worker
   # Log in to the docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push ssomesh851/multi-client
-  - docker push ssomesh851/multi-nginx
-  - docker push ssomesh851/multi-server
-  - docker push ssomesh851/multi-worker
+  - docker push ssomesh472/multi-client
+  - docker push ssomesh472/multi-nginx
+  - docker push ssomesh472/multi-server
+  - docker push ssomesh472/multi-worker
  
